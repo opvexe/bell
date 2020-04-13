@@ -4,6 +4,9 @@ import (
 	ctrls "bell/controller"
 	"bell/middleware"
 	"github.com/gin-gonic/gin"
+	_ "bell/docs"
+	ginSwagger "github.com/swaggo/gin-swagger"
+	"github.com/swaggo/gin-swagger/swaggerFiles"
 )
 
 type Router struct {
@@ -22,9 +25,9 @@ func (r *Router) With(engine *gin.Engine) {
 
 	user := r.newUser(v1)
 	{
-		user.GET("/register", r.userCtrl.Login)
+		user.GET("/register", r.userCtrl.Create)
 	}
-
+	engine.GET("/swagger/*any",ginSwagger.WrapHandler(swaggerFiles.Handler))
 }
 
 func (r *Router) newUser(v1 *gin.RouterGroup) *gin.RouterGroup {

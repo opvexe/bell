@@ -10,7 +10,7 @@ import (
 	"time"
 )
 
-func NewDB(conf *config.Config, logger *logrus.Logger) (*gorm.DB, error) {
+func NewDatabaseMYSQL(conf *config.Config, logger *logrus.Logger) (*gorm.DB, error) {
 	opt := conf.Mysql
 	db, err := gorm.Open("mysql", opt.URL)
 	if err != nil {
@@ -28,5 +28,5 @@ func NewDB(conf *config.Config, logger *logrus.Logger) (*gorm.DB, error) {
 }
 
 var WireSet = wire.NewSet(
-	NewDB,
+	NewDatabaseMYSQL,
 )

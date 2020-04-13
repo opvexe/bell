@@ -18,6 +18,12 @@ func NewUserController(logger *logrus.Logger, userSvc *service.UserService) *Use
 	}
 }
 
-func (u *UserController) Login(c *gin.Context) {
+// @Summary Add new user to the database
+// @Description Add a new user
+// @Tags user
+// @Accept  json
+// @Produce  json
+// @Router /user [post]
+func (u *UserController) Create(c *gin.Context) {
 
 }

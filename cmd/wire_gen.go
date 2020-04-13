@@ -23,11 +23,10 @@ import (
 func BuildApp(path2 string) (*app.App, error) {
 	conf := config.NewConfig(path2)
 	logger := log.New()
-
-	db, err := database.NewDB(conf, logger)
-	if err != nil {
-		return nil, err
-	}
+	db, _ := database.NewDB(conf, logger)
+	//if err != nil {
+	//	return nil, err
+	//}
 
 	recoverMid := middleware.NewRecover(logger)
 

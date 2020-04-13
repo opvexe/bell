@@ -9,6 +9,7 @@ import (
 type Config struct {
 	Http  HttpConfig  `mapstructure:"http"`
 	Mysql MysqlConfig `mapstructure:"mysql"`
+	Mongodb  MongodbConfig  `mapstructure:"mongodb"`
 }
 
 type HttpConfig struct {
@@ -24,6 +25,14 @@ type MysqlConfig struct {
 	MaxOpen     int    `mapstructure:"max_open"`
 	MaxLeftTime int    `mapstructure:"max_leftTime"`
 	Debug       bool   `mapstructure:"debug"`
+}
+
+type MongodbConfig struct {
+	Host     string `json:"host"`
+	Port     string `json:"port"`
+	Username string `json:"username"`	//用户
+	Password string `json:"password"`	//密码
+	Database string `json:"database"`	//数据库名
 }
 
 func NewConfig(path string) *Config {
