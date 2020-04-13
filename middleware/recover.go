@@ -2,13 +2,15 @@ package middleware
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/sirupsen/logrus"
 )
 
 type Recover struct {
+	logger  *logrus.Logger
 }
 
-func NewRecover() *Recover {
-	return &Recover{}
+func NewRecover(logger *logrus.Logger) *Recover {
+	return &Recover{logger:logger}
 }
 
 func (r *Recover) Handler() gin.HandlerFunc {

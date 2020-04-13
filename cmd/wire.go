@@ -3,24 +3,26 @@
 package cmd
 
 import (
-	conf "bell/config"
-	ctrl "bell/controller"
+	"bell/app"
+	"bell/config"
+	"bell/controller"
+	"bell/library/logger"
+	"bell/middleware"
+	"bell/repository"
+	"bell/router"
+	"bell/service"
 	"github.com/google/wire"
-	app "bell/app"
-	api "bell/router"
-	mid "bell/middleware"
-	svc "bell/service"
-	repos "bell/repository"
 )
 
 func BuildApp(path string) (*app.App,error) {
 	panic(wire.Build(
-		conf.WireSet,
-		repos.WireSet,
-		ctrl.WireSet,
-		svc.WireSet,
-		mid.WireSet,
-		api.WireSet,
+		config.WireSet,
+		logger.New,
+		repository.WireSet,
+		service.WireSet,
+		controller.WireSet,
+		middleware.WireSet,
+		router.WireSet,
 		app.WireSet,
 	))
 }

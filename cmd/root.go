@@ -26,11 +26,13 @@ func Execute() {
 func newRootCommand() *cobra.Command {
 	cmd := &cobra.Command{
 		Run: func(cmd *cobra.Command, args []string) {
-			app,err :=BuildApp(path)
-			if err!=nil{
-				panic(err)
-			}
-			app.Start()
+			conf,_ :=BuildApp(path)
+			fmt.Println(conf)
+			//app,err :=BuildApp(path)
+			//if err!=nil{
+			//	panic(err)
+			//}
+			//app.Start()
 		},
 	}
 	return cmd

@@ -5,12 +5,35 @@
 
 package cmd
 
-import "bell/app"
+import (
+	"bell/app"
+	"bell/config"
+	"bell/controller"
+	log "bell/library/logger"
+	"bell/middleware"
+	"bell/repository"
+	api "bell/router"
+	"bell/app/web"
+	"bell/service"
+)
 
 // Injectors from wire.go:
 
-func BuildApp(path *string) (*app.App, error) {
+func BuildApp(path2 string) (*app.App, error) {
+	conf := config.NewConfig(path2)
+	logger := log.New()
 
+	recoverMid := middleware.NewRecover(logger)
 
-	return nil,nil
+	userRepository := repository.NewUserRepository(logger)
+	userService := service.NewUserService(userRepository,logger)
+	userController := controller.NewUserController(logger,userService)
+
+	engine := app.NewGinEngine()
+
+	router := api.NewRouter(recoverMid,userController)
+	server := web.NewServer(engine,router,logger)
+	app := app.NewApp(conf,server)
+
+	return app, nil
 }
