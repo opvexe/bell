@@ -6,11 +6,11 @@ import (
 )
 
 type Recover struct {
-	logger  *logrus.Logger
+	logger *logrus.Logger
 }
 
 func NewRecover(logger *logrus.Logger) *Recover {
-	return &Recover{logger:logger}
+	return &Recover{logger: logger}
 }
 
 func (r *Recover) Handler() gin.HandlerFunc {

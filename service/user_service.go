@@ -7,13 +7,13 @@ import (
 
 type UserService struct {
 	userRepo *repository.UserRepository
-	logger *logrus.Logger
+	logger   *logrus.Logger
 }
 
-func NewUserService(userRepo *repository.UserRepository,logger *logrus.Logger) *UserService {
-	return &UserService{userRepo:userRepo,logger:logger}
+func NewUserService(userRepo *repository.UserRepository, logger *logrus.Logger) *UserService {
+	return &UserService{userRepo: userRepo, logger: logger}
 }
 
-func (s *UserService) FindByUid(uid int)  {
+func (s *UserService) FindByUid(uid int) {
 	s.userRepo.FindByUid(uid)
 }

@@ -9,12 +9,11 @@ import (
 type Router struct {
 	recoverMid *middleware.Recover
 
-
 	userCtrl *ctrls.UserController
 }
 
-func NewRouter(recoverMid *middleware.Recover,userCtrl *ctrls.UserController) *Router {
-	return &Router{recoverMid:recoverMid,userCtrl:userCtrl}
+func NewRouter(recoverMid *middleware.Recover, userCtrl *ctrls.UserController) *Router {
+	return &Router{recoverMid: recoverMid, userCtrl: userCtrl}
 }
 
 func (r *Router) With(engine *gin.Engine) {
@@ -23,7 +22,7 @@ func (r *Router) With(engine *gin.Engine) {
 
 	user := r.newUser(v1)
 	{
-		user.GET("/register",r.userCtrl.Login)
+		user.GET("/register", r.userCtrl.Login)
 	}
 
 }
@@ -33,4 +32,3 @@ func (r *Router) newUser(v1 *gin.RouterGroup) *gin.RouterGroup {
 	// 添加中间件
 	return public
 }
-

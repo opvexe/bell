@@ -12,10 +12,10 @@ type Config struct {
 }
 
 type HttpConfig struct {
-	Host string `mapstructure:"host"`
-	Port string `mapstructure:"port"`
+	Host     string `mapstructure:"host"`
+	Port     string `mapstructure:"port"`
 	RunModel string `mapstructure:"run_model"`
-	Version string `mapstructure:"version"`
+	Version  string `mapstructure:"version"`
 }
 
 type MysqlConfig struct {

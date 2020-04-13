@@ -15,7 +15,7 @@ import (
 	"github.com/google/wire"
 )
 
-func BuildApp(path string) (*app.App,error) {
+func BuildApp(path string) (*app.App, error) {
 	panic(wire.Build(
 		config.WireSet,
 		logger.New,

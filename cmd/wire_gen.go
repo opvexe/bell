@@ -24,22 +24,22 @@ func BuildApp(path2 string) (*app.App, error) {
 	conf := config.NewConfig(path2)
 	logger := log.New()
 
-	db,err :=database.NewDB(conf,logger)
-	if err!=nil{
-		return nil,err
+	db, err := database.NewDB(conf, logger)
+	if err != nil {
+		return nil, err
 	}
 
 	recoverMid := middleware.NewRecover(logger)
 
-	userRepository := repository.NewUserRepository(logger,db)
-	userService := service.NewUserService(userRepository,logger)
-	userController := controller.NewUserController(logger,userService)
+	userRepository := repository.NewUserRepository(logger, db)
+	userService := service.NewUserService(userRepository, logger)
+	userController := controller.NewUserController(logger, userService)
 
 	engine := app.NewGinEngine()
 
-	router := api.NewRouter(recoverMid,userController)
-	server := web.NewServer(engine,router,logger,conf)
-	app := app.NewApp(conf,server)
+	router := api.NewRouter(recoverMid, userController)
+	server := web.NewServer(engine, router, logger, conf)
+	app := app.NewApp(conf, server)
 
 	return app, nil
 }

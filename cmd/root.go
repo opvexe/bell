@@ -7,8 +7,8 @@ import (
 )
 
 var (
-	rootCmd  *cobra.Command
-	path string
+	rootCmd *cobra.Command
+	path    string
 )
 
 func init() {
@@ -26,8 +26,8 @@ func Execute() {
 func newRootCommand() *cobra.Command {
 	cmd := &cobra.Command{
 		Run: func(cmd *cobra.Command, args []string) {
-			app,err:=BuildApp(path)
-			if err!=nil{
+			app, err := BuildApp(path)
+			if err != nil {
 				panic(err)
 			}
 			app.Start()

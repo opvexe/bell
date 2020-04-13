@@ -11,13 +11,13 @@ type UserController struct {
 	userSvc *service.UserService
 }
 
-func NewUserController(logger *logrus.Logger,userSvc *service.UserService) *UserController {
+func NewUserController(logger *logrus.Logger, userSvc *service.UserService) *UserController {
 	return &UserController{
 		logger:  logger,
 		userSvc: userSvc,
 	}
 }
 
-func (u *UserController) Login(c *gin.Context)  {
+func (u *UserController) Login(c *gin.Context) {
 
 }

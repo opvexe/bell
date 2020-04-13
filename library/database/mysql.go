@@ -10,15 +10,15 @@ import (
 	"time"
 )
 
-func NewDB(conf *config.Config,logger  *logrus.Logger) (*gorm.DB,error) {
+func NewDB(conf *config.Config, logger *logrus.Logger) (*gorm.DB, error) {
 	opt := conf.Mysql
 	db, err := gorm.Open("mysql", opt.URL)
 	if err != nil {
 		return nil, err
 	}
-	db.DB().SetMaxIdleConns(opt.MaxIdle) //初始化数据库连接数
-	db.DB().SetMaxOpenConns(opt.MaxOpen) //额外增开
-	db.DB().SetConnMaxLifetime(time.Duration(opt.MaxLeftTime)*time.Second)   //链接时长
+	db.DB().SetMaxIdleConns(opt.MaxIdle)                                     //初始化数据库连接数
+	db.DB().SetMaxOpenConns(opt.MaxOpen)                                     //额外增开
+	db.DB().SetConnMaxLifetime(time.Duration(opt.MaxLeftTime) * time.Second) //链接时长
 	db.SingularTable(true)
 
 	if opt.Debug {
@@ -26,7 +26,6 @@ func NewDB(conf *config.Config,logger  *logrus.Logger) (*gorm.DB,error) {
 	}
 	return db, db.AutoMigrate(new(model.User)).Error
 }
-
 
 var WireSet = wire.NewSet(
 	NewDB,
