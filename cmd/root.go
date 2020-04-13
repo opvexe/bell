@@ -13,7 +13,7 @@ var (
 
 func init() {
 	rootCmd = newRootCommand()
-	rootCmd.Flags().StringVarP(&path, "path", "p", "./config/dev.yaml", "input config path")
+	rootCmd.Flags().StringVarP(&path, "path", "p", "config/dev.yaml", "input config path")
 }
 
 func Execute() {
@@ -26,13 +26,11 @@ func Execute() {
 func newRootCommand() *cobra.Command {
 	cmd := &cobra.Command{
 		Run: func(cmd *cobra.Command, args []string) {
-			conf,_ :=BuildApp(path)
-			fmt.Println(conf)
-			//app,err :=BuildApp(path)
-			//if err!=nil{
-			//	panic(err)
-			//}
-			//app.Start()
+			app,err:=BuildApp(path)
+			if err!=nil{
+				panic(err)
+			}
+			app.Start()
 		},
 	}
 	return cmd

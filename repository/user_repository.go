@@ -1,13 +1,17 @@
 package repository
 
-import "github.com/sirupsen/logrus"
+import (
+	"github.com/jinzhu/gorm"
+	"github.com/sirupsen/logrus"
+)
 
 type UserRepository struct {
 	logger *logrus.Logger
+	db *gorm.DB
 }
 
-func NewUserRepository(logger *logrus.Logger) *UserRepository {
-	return &UserRepository{logger:logger}
+func NewUserRepository(logger *logrus.Logger,db *gorm.DB) *UserRepository {
+	return &UserRepository{logger:logger,db:db}
 }
 
 

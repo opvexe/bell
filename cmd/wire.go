@@ -6,6 +6,7 @@ import (
 	"bell/app"
 	"bell/config"
 	"bell/controller"
+	"bell/library/database"
 	"bell/library/logger"
 	"bell/middleware"
 	"bell/repository"
@@ -18,6 +19,7 @@ func BuildApp(path string) (*app.App,error) {
 	panic(wire.Build(
 		config.WireSet,
 		logger.New,
+		database.WireSet,
 		repository.WireSet,
 		service.WireSet,
 		controller.WireSet,
