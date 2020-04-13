@@ -10,6 +10,7 @@ type Config struct {
 	Http  HttpConfig  `mapstructure:"http"`
 	Mysql MysqlConfig `mapstructure:"mysql"`
 	Mongodb  MongodbConfig  `mapstructure:"mongodb"`
+	AliyunOss AliyunOssConfig  `mapstructure:"aliyunOss"`
 }
 
 type HttpConfig struct {
@@ -28,11 +29,18 @@ type MysqlConfig struct {
 }
 
 type MongodbConfig struct {
-	Host     string `json:"host"`
-	Port     string `json:"port"`
-	Username string `json:"username"`	//用户
-	Password string `json:"password"`	//密码
-	Database string `json:"database"`	//数据库名
+	Host     string `mapstructure:"host"`
+	Port     string `mapstructure:"port"`
+	Username string `mapstructure:"username"`	//用户
+	Password string `mapstructure:"password"`	//密码
+	Database string `mapstructure:"database"`	//数据库名
+}
+
+type AliyunOssConfig struct {
+	Endpoint string
+	AccessId string
+	AccessSecret string
+	BucketName string
 }
 
 func NewConfig(path string) *Config {

@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ca1d9d2c-6eda-42cb-8898-ee1fd63e2086" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/library/database/mongo_db.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/database/redis_db.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/library/helper/crypto.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/library/time/time.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/web/web.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/web/web.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/wire_gen.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/wire_gen.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/user_controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/user_controller.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library/database/mysql.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/router/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/router.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
